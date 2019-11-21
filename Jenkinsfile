@@ -68,7 +68,7 @@ pipeline {
                         docker pull crpavel22/person
                         docker stop person
                         docker rm person
-                        docker run -p 9090:9090 -name person -t -d crpavel22/person
+                        docker run -p 9090:9090 --name person -t -d crpavel22/person
                         docker rmi -f $(docker images -q --filter dangling=true)
                    '''
             }
