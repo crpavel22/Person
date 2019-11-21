@@ -69,8 +69,8 @@ pipeline {
                         docker stop person
                         docker rm person
                         docker run -p 9090:9090 --name person -t -d crpavel22/person
-                        docker rmi -f $(docker images -q --filter dangling=true)
                    '''
+                // docker rmi -f $(docker images -q --filter dangling=true)
             }
         }
 
@@ -83,8 +83,8 @@ pipeline {
                         docker build --no-cache -t person .
                         docker tag person:latest crpavel22/person:${TAG_NAME}
                         docker push crpavel22/person:${TAG_NAME}
-                        docker rmi $(docker images -f “dangling=true” -q)
                    '''
+                // docker rmi $(docker images -f “dangling=true” -q)
             }
         }
     }
