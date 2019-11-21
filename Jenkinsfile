@@ -62,12 +62,8 @@ pipeline {
 
         stage('Update image on current Docker') {
             when {
-                anyOf {
+
                     branch "master"
-                }
-                OR {
-                    branch "develop"
-                }
             }
             steps {
                 sh '''
