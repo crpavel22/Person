@@ -89,7 +89,3 @@ pipeline {
         }
     }
 }
-
-def buildingTag() {
-    sh 'echo Esto es una prueba'
-}
