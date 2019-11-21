@@ -21,7 +21,7 @@ pipeline {
             }
         }
 
-        stage('Check Style, FindBugs, PMD') {
+        /*stage('Check Style, FindBugs, PMD') {
             steps {
                 sh './gradlew --no-daemon checkstyleMain checkstyleTest findbugsMain findbugsTest pmdMain pmdTest cpdCheck'
             }
@@ -44,7 +44,7 @@ pipeline {
                     ])
                 }
             }
-        }
+        }*/
 
         stage('Test'){
             steps{
