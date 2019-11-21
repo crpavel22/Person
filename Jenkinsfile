@@ -65,7 +65,7 @@ pipeline {
             steps {
                 sh '''
                         docker login -u "crpavel22" -p "pyWzag-recmuh-7rybgo"
-                        docker pull crpavel22/person:latest
+                        docker pull crpavel22/person
                         docker stop person
                         docker rm person
                         docker run -p 9090:9090 -name person -t -d crpavel22/person
