@@ -60,15 +60,32 @@ pipeline {
             }
         }
 
+        stage('Update image on current Docker') {
+            when {
+                anyOf {
+                    branch "master"
+                }
+                OR {
+                    branch "develop"
+                }
+            }
+            steps {
+                sh '''
+                        docker build --no-cache -t crpavel22/person:latest .
+                        docker stop person
+                        docker rm person
+                        docker run -p 9090:9090 --name person -t -d crpavel22/person:latest
+                   '''
+                // docker rmi -f $(docker images -q --filter dangling=true)
+            }
+        }
+
         stage('Update Docker UAT image') {
             when { branch "master" }
             steps {
                 sh '''
                         docker login -u "crpavel22" -p "pyWzag-recmuh-7rybgo"
-                        docker pull crpavel22/person
-                        docker stop person
-                        docker rm person
-                        docker run -p 9090:9090 --name person -t -d crpavel22/person
+                        docker push crpavel22/person:latest
                    '''
                 // docker rmi -f $(docker images -q --filter dangling=true)
             }
