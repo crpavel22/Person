@@ -63,7 +63,7 @@ pipeline {
             }
         }
 
-        stage('Update Docker UAT image') {
+        /*stage('Update Docker UAT image') {
             when { branch "master" }
             steps {
                 sh '''
@@ -75,7 +75,7 @@ pipeline {
                         docker rmi -f $(docker images -q --filter dangling=true)
                    '''
             }
-        }
+        }*/
 
         stage('Release Docker image') {
             when { buildingTag() }
