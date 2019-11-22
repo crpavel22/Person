@@ -24,6 +24,13 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
+task copyToLib(type: Copy) {
+	from configurations.runtime
+	into "$buildDir/output/lib"
+}
 test {
 	useJUnitPlatform()
 }
+
+
+

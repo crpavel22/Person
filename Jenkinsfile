@@ -67,6 +67,7 @@ pipeline {
             }
             steps {
                 sh '''
+                        mkdir -p build/libs/dependency && (cd build/libs/dependency; jar -xf ../*.jar)
                         docker build --no-cache -t crpavel22/person:latest .
                         docker stop person
                         docker rm person
